@@ -33,7 +33,7 @@ void genCases(int num) //generate test cases if input is 1 or 2
     
     fclose(fp);
   }
-  if (num == 2) //this one handles numbers greater than 10^10 for the pages, also it has to be less than 10^13 because 10^9 is too small and would need 100000 books to get some variety.
+  if (num == 2) //this one handles numbers greater than 10^10 for the pages, because 10^9 is too small for the results we want.
   {
     fprintf(fp, "%d\n", 1);
     for(int i=0; i<1; i++)
