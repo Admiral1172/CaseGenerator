@@ -3,6 +3,9 @@
 #include <math.h>
 #include <time.h>
 
+//One of the main purposes of this program was to try and crash programs using large values which would take forever by hand.
+//Used for CS1 projects
+
 void genCases(int num) //generate test cases if input is 1 or 2
 {
   FILE *fp;
@@ -17,9 +20,7 @@ void genCases(int num) //generate test cases if input is 1 or 2
 
   int numCases = rand() % 25; // random seed generator.
 
-  printf("Enter 1 for 100000 Books or 2 for numbers larger than 10^9.");
-
-  if (num == 1) //testing out the 100000 books case
+  if (num == 1) //testing out the 100000 case
   {
     fprintf(fp, "%d\n", numCases);
     for(int i=0; i<numCases; i++)
@@ -35,7 +36,7 @@ void genCases(int num) //generate test cases if input is 1 or 2
   }
   if (num == 2) //this one handles numbers greater than 10^10 for the pages, because 10^9 is too small for the results we want.
   {
-    fprintf(fp, "%d\n", 1);
+    fprintf(fp, "%d\n", 1); //since it's large enough, but you can change to numCases if you want a randomized version
     for(int i=0; i<1; i++)
     {
       fprintf(fp, "%d %lld\n", 100000, ((rand() * (long long)(RAND_MAX) + rand()) % (maxPages-lowPage+1)) + lowPage); //best way to go around rand limits and limit value to within range. Should allow for numbers greater than 32768
@@ -54,6 +55,7 @@ int main(void)
 {
   int pCases;
 
+  printf("Enter either 1 for smaller numbers, 2 for large nums over 10^9 \n");
   scanf("%d", &pCases);
   genCases(pCases);
 
